@@ -1,29 +1,46 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 import PageTitle from './PageTitle';
 
 function Header() {
   return (
-    <StyledHeader>
+    <PageHeader>
+      <NewsIcon />
       <SiteTitle>Awesome News</SiteTitle>
-      <PageTitle title="Recent news" />
-      <PageTitle title="Top rated" />
-      <PageTitle title="Categories" />
-    </StyledHeader>
+      <Link to="/recent" style={{ textDecoration: 'none' }}>
+        <PageTitle title="Recent news" />
+      </Link>
+      <Link to="/top-rated" style={{ textDecoration: 'none' }}>
+        <PageTitle title="Top rated" />
+      </Link>
+      <Link to="/categories" style={{ textDecoration: 'none' }}>
+        <PageTitle title="Categories" />
+      </Link>
+    </PageHeader>
   );
 }
 
 const SiteTitle = styled.p`
     color: #ffffff;
     margin-right: 20px;
+    font-weight: bold;
+    font-size: 18px;
 `;
 
-const StyledHeader = styled.div`
-  background-color: #a175d3;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
+const NewsIcon = styled(NewspaperIcon)`
+    color: #ffffff;
+    margin-right: 10px;
+`;
+
+const PageHeader = styled.div`
+    background-color: #a175d3;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
 `;
 
 export default Header;

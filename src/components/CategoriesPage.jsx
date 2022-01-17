@@ -1,29 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNewsCategoryContext } from '../newsContext';
+import ArticlePageTitle from './ArticlePageTitle';
+import carImage from '../images/car.png';
+import entertainmentImage from '../images/entertainment.png';
+import environmentImage from '../images/environment.png';
+import fashionImage from '../images/fashion.png';
+import financeImage from '../images/finance.png';
+import scienceImage from '../images/science.png';
+import technologyImage from '../images/technology.png';
+import travelImage from '../images/travel.png';
 
 function CategoriesPage() {
-  const categories = useNewsCategoryContext();
+  const categories = [{ name: 'Car', image: carImage }, { name: 'Environment', image: environmentImage },
+    { name: 'Entertainment', image: entertainmentImage }, { name: 'Fashion', image: fashionImage },
+    { name: 'Finances', image: financeImage }, { name: 'Science', image: scienceImage },
+    { name: 'Technology', image: technologyImage }, { name: 'Travel', image: travelImage }];
 
-  const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
-
-  const renderCategoryItem = () => categories.map((category) => {
-    const correctCasing = capitalizeFirstLetter(category.category);
-    return (
-      <CategoryWrapper key={correctCasing}>
-        <CategoryImage src={category.imageUrl} alt={correctCasing} />
-        <CategoryTitle>{correctCasing}</CategoryTitle>
-      </CategoryWrapper>
-    );
-  });
+  const renderCategoryItem = () => categories.map((category) => (
+    <CategoryWrapper key={category.name}>
+      <CategoryImage src={category.image} alt={category.name} />
+      <CategoryTitle>{category.name}</CategoryTitle>
+    </CategoryWrapper>
+  ));
 
   return (
     <StyledContainer>
-      <p>Categories to show</p>
+      <ArticlePageTitle title="Categories to show" />
       <CategoriesContainer>
         {renderCategoryItem()}
       </CategoriesContainer>
-
     </StyledContainer>
   );
 }
@@ -41,7 +46,6 @@ const CategoriesContainer = styled.div`
 `;
 
 const CategoryWrapper = styled.div`
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -50,6 +54,7 @@ const CategoryWrapper = styled.div`
 const CategoryTitle = styled.p`
     color: #a175d3;
     cursor: pointer;
+    font-weight: 600;
 `;
 
 const CategoryImage = styled.img`

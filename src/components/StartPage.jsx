@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function PageTitle({ title }) {
+function StartPage() {
   return (
-    <NewsPageTitle>{title}</NewsPageTitle>
+    <StyledTitle>Not implemented</StyledTitle>
   );
 }
 
-const NewsPageTitle = styled.p`
-  color: #ffffff;
+const StyledTitle = styled.p`
   margin-left: 10px;
   margin-right: 10px;
   cursor: pointer;
 `;
 
-export default PageTitle;
+export default StartPage;
